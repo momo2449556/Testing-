@@ -10,12 +10,12 @@ const double g = 9.81;
 
 int main(){
     double x, y, vx, vy, t, t0, tf, dt;
-    double x0, y0, v0x, v0y, v0, theta;
+    double x0, y0, v0x, v0y, v0, theta, k;
     string buf;
 
 
-    cout << " Input v0 and launch angle theta (degrees):\n";
-    cin >> v0 >> theta ;  getline(cin, buf);
+    cout << " Input v0, k and launch angle theta (degrees):\n";
+    cin >> v0 >> k >> theta ;  getline(cin, buf);
 
     cout << " Input t0, tf, and dt:\n";
     cin >> t0 >> tf >> dt; getline(cin, buf);
@@ -42,10 +42,10 @@ myfile.precision(17);
 
     while( t <= tf){
 
-        x = v0x*t;
-        y = v0y*t - 0.5*g*t*t;
-        vx = v0x;
-        vy = v0y - g*t;
+        x = v0x/k * (1- exp(-k*t));
+        y = 1/k * (v0y + g/k) * (1 - exp(-k*t)) - g/k*t;
+        vx = v0x*exp(-k*t);
+        vy = (v0y+g/k)*exp(-k*t) - g/k;
 
 
         if (y < 0) break;
@@ -54,7 +54,7 @@ myfile.precision(17);
          << endl;
 
 
-        t += dt
+        t += dt;
     }
 
 
