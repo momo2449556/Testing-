@@ -24,7 +24,7 @@ int main(){
     cout << "# theta= " << theta << " v0= " << v0 << endl;
 
     
-     ofstream myfile("C:/Users/Mohammed/Testing-/Projectile.DAT");
+     ofstream myfile("C:/Users/Mohammed/Testing-/PAR.DAT");
 if (!myfile.is_open()) {
     cerr << "Error: Could not open file for writing!\n";
     return 1; 
